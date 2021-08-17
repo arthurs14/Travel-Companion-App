@@ -1,7 +1,5 @@
 import axios from 'axios';
-import { travelKeyAPI, travelHost } from '../keys/keys';
-
-const URL = 'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary';
+import { travelURL, travelKeyAPI, travelHost } from '../keys/keys';
 
 var options = {
   params: {
@@ -19,7 +17,7 @@ var options = {
 export const getPlacesData = async () => {
   try {
     // request
-    const { data: { data } } = await axios.get(URL, options);
+    const { data: { data } } = await axios.get(travelURL, options);
 
     return data;
   } catch (error) {
