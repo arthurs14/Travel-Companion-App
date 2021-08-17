@@ -16,11 +16,14 @@ var options = {
   }
 };
 
-const getPlacesData = async () => {
+export const getPlacesData = async () => {
   try {
     // request
-    const res = await axios.get();
+    const { data: { data } } = await axios.get(URL, options);
+
+    return data;
   } catch (error) {
-    // code redirect if fails    
+    // code redirect if fails   
+    console.log(error); 
   }
 };
