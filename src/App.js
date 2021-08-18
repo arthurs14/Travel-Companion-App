@@ -19,12 +19,10 @@ const App = () => {
     });
   }, []);
 
+  // should update when either bounds or coords change
   useEffect(() => {
-    console.log('coordinates:', coordinates);
-    console.log('bounds:', bounds);
     getPlacesData(bounds.sw, bounds.ne)
       .then((data) => {
-        console.log(data);
         setPlaces(data);
       });
   }, [coordinates, bounds]);
