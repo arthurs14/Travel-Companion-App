@@ -1,4 +1,4 @@
-import {  useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { CssBaseline, Grid } from '@material-ui/core';
 
 import { getPlacesData } from './api';
@@ -14,9 +14,17 @@ const App = () => {
 
   // should only run at the start
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-      setCoordinates({ lat: latitude, lng: longitude });
-    });
+    // navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
+    //   console.log();
+    //   setCoordinates({ lat: latitude, lng: longitude });
+    // });
+
+    const success = (position) => {
+      const { latitude, longitude } = position.coords;
+      setCoordinates({ test: 'hello world' });
+    };
+
+    navigator.geolocation.getCurrentPosition(success);
   }, []);
 
   // should update when either bounds or coords change
@@ -26,6 +34,8 @@ const App = () => {
         setPlaces(data);
       });
   }, [coordinates, bounds]);
+
+  console.log(coordinates);
 
   return (
     <>
