@@ -20,6 +20,8 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    console.log('coordinates:', coordinates);
+    console.log('bounds:', bounds);
     getPlacesData(bounds.sw, bounds.ne)
       .then((data) => {
         console.log(data);
