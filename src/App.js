@@ -14,11 +14,6 @@ const App = () => {
 
   // should only run at the start
   useEffect(() => {
-    // navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-    //   console.log();
-    //   setCoordinates({ lat: latitude, lng: longitude });
-    // });
-
     const success = (pos) => {
       const { latitude, longitude } = pos.coords;
       setCoordinates({ lat: latitude, lng: longitude });
