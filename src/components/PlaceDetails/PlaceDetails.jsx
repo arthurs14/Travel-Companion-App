@@ -5,7 +5,7 @@ import {
   Card, 
   CardMedia, 
   CardContent, 
-  ardActions, 
+  CardActions, 
   Chip 
 } from "@material-ui/core";
 import LocationOnIcon from '@material-ui/icons/LocationOn';
@@ -83,6 +83,20 @@ const PlaceDetails = ({ place }) => {
             </Typography>
           )
         }
+        <CardActions>
+          <Button 
+            size="small" 
+            color="primary" 
+            onClick={() => window.open(place.web_url, '_blank')}>
+              Trip Advisor
+          </Button>
+          <Button 
+            size="small" 
+            color="primary" 
+            onClick={() => window.open(place.website, '_blank')}>
+              Website
+          </Button>
+        </CardActions>
       </CardContent>
     </Card>
   );
