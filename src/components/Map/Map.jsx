@@ -1,7 +1,7 @@
 import GoogleMapReact from 'google-map-react';
 import { Paper, Typography, useMediaQuery } from '@material-ui/core';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import Rating from '@material-ui/lab';
+import Rating from '@material-ui/lab/Rating';
 
 import useStyles from './styles';
 import { GoogleMapAPI } from '../../keys/keys';
@@ -49,6 +49,11 @@ const Map = ({ setCoordinates, setBounds, coordinates, places }) => {
                           : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'
                       }
                       alt={place.name}
+                    />
+                    <Rating 
+                      size="small" 
+                      value={Number(place.rating)} 
+                      readOnly 
                     />
                   </Paper>
                 )
