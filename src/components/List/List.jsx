@@ -21,10 +21,10 @@ const List = ({ places, childClicked, loading }) => {
   const [elRefs, setElRefs] = useState([]);
 
   useEffect(() => {
-    const refs = Array(places?.length).fill().map((_, idx) => refs[idx] || createRef());
+    const refs = Array(places?.length).fill().map((_, idx) => elRefs[idx] || createRef());
 
     setElRefs(refs);
-  }, [places]);
+  }, [elRefs, places]);
 
   return (
     <div className={classes.container}>

@@ -18,7 +18,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
   const classes = useStyles();
 
   if (selected) {
-    refProp.Box.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   return (

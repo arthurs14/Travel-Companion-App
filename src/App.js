@@ -26,8 +26,9 @@ const App = () => {
   }, []);
 
   // should update when either bounds or coords change
-  useEffect(() => {
+  useEffect(() => {  
     if (bounds) {
+      setLoading(true);
       getPlacesData(bounds.sw, bounds.ne)
         .then((data) => {
           setPlaces(data);
