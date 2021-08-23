@@ -13,6 +13,8 @@ const App = () => {
    const [coordinates, setCoordinates] = useState({});
    const [bounds, setBounds] = useState({});
 
+   const [loading, setLoading] = useState(false);
+
   // should only run at the start
   useEffect(() => {
     const success = (pos) => {
@@ -29,6 +31,7 @@ const App = () => {
       getPlacesData(bounds.sw, bounds.ne)
         .then((data) => {
           setPlaces(data);
+          setLoading(false)
         });
     }
   }, [coordinates, bounds]);
@@ -39,7 +42,7 @@ const App = () => {
       <Header />
       <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={4}>
-          <List places={places} childClicked={childClicked} />
+          <List places={places} childClicked={childClicked} loading={loading} />
         </Grid>
         <Grid item xs={12} md={8}>
           <Map
