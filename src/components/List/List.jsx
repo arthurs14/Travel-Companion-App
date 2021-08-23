@@ -59,7 +59,7 @@ const List = ({ places, childClicked, loading }) => {
               {
                 places?.map((place, idx) => (
                   <Grid ref={elRefs[idx]} item key={idx} xs={12}>
-                    <PlaceDetails 
+                    <PlaceDetails
                       place={place} 
                       selected={Number(childClicked) === idx} 
                       refProp={elRefs[idx]}
