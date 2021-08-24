@@ -34,13 +34,13 @@ const App = () => {
     setLoading(true);
     
     if (bounds) {
-      getPlacesData(bounds.sw, bounds.ne)
+      getPlacesData(type, bounds.sw, bounds.ne)
         .then((data) => {
           setPlaces(data);
           setLoading(false)
         });
     }
-  }, [coordinates, bounds]);
+  }, [type, coordinates, bounds]);
 
   return (
     <>
