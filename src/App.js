@@ -16,7 +16,7 @@ const App = () => {
 
    const [loading, setLoading] = useState(false);
 
-   const [type, setType] = useState('restauraunts');
+   const [type, setType] = useState('restaurants');
    const [rating, setRating] = useState('');
 
   // should only run at the start

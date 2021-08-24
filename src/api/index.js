@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { travelURL, travelKeyAPI, travelHost } from '../keys/keys';
+import { travelURL, URL, travelKeyAPI, travelHost } from '../keys/keys';
 
 export const getPlacesData = async (type, sw, ne) => {
   try {
+    console.log(URL + `${type}/list-in-boundary`);
     // request
-    const { data: { data } } = await axios.get(`${travelURL}/${type}/list-in-boundary`, {
+    const { data: { data } } = await axios.get(URL + `${type}/list-in-boundary`, {
       params: {
         bl_latitude: sw.lat,
         tr_latitude: ne.lat,
