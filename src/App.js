@@ -10,10 +10,14 @@ import Map from './components/Map/Map';
 const App = () => {
    const [places, setPlaces] = useState([]);
    const [childClicked, setChildClicked] = useState(null);
+
    const [coordinates, setCoordinates] = useState({});
    const [bounds, setBounds] = useState({});
 
    const [loading, setLoading] = useState(false);
+
+   const [type, setType] = useState('restauraunts');
+   const [rating, setRating] = useState('');
 
   // should only run at the start
   useEffect(() => {
@@ -44,7 +48,15 @@ const App = () => {
       <Header />
       <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={4}>
-          <List places={places} childClicked={childClicked} loading={loading} />
+          <List 
+            places={places} 
+            childClicked={childClicked} 
+            loading={loading} 
+            type={type}
+            setType={setType}
+            rating={rating}
+            setRating={setRating}
+          />
         </Grid>
         <Grid item xs={12} md={8}>
           <Map
