@@ -9,7 +9,7 @@ import Map from './components/Map/Map';
 
 const App = () => {
    const [places, setPlaces] = useState([]);
-  const [filterPlaces, setFilterPlaces] = useState([]);
+  const [filteredPlaces, setFilteredPlaces] = useState([]);
 
    const [childClicked, setChildClicked] = useState(null);
 
@@ -35,7 +35,7 @@ const App = () => {
   useEffect(() => {
     const filteredPlaces = places.filter((place) => place.rating > rating);
 
-    setFilterPlaces(filteredPlaces);
+    setFilteredPlaces(filteredPlaces);
   }, [rating]);
 
   // should update when either bounds or coords change
@@ -46,6 +46,7 @@ const App = () => {
       getPlacesData(type, bounds.sw, bounds.ne)
         .then((data) => {
           setPlaces(data);
+          setFilteredPlaces([])
           setLoading(false)
         });
     }
@@ -58,7 +59,7 @@ const App = () => {
       <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={4}>
           <List 
-            places={places} 
+            places={filteredPlaces.length ? filteredPlaces : places} 
             childClicked={childClicked} 
             loading={loading} 
             type={type}
