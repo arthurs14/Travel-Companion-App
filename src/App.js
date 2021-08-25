@@ -9,6 +9,8 @@ import Map from './components/Map/Map';
 
 const App = () => {
    const [places, setPlaces] = useState([]);
+  const [filterPlaces, setFilterPlaces] = useState([]);
+
    const [childClicked, setChildClicked] = useState(null);
 
    const [coordinates, setCoordinates] = useState({});
@@ -28,6 +30,13 @@ const App = () => {
 
     navigator.geolocation.getCurrentPosition(success);
   }, []);
+
+  // when rating filter changes
+  useEffect(() => {
+    const filteredPlaces = places.filter((place) => place.rating > rating);
+
+    setFilterPlaces(filteredPlaces);
+  }, [rating]);
 
   // should update when either bounds or coords change
   useEffect(() => {  
