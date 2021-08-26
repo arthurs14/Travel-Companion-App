@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { URL, travelKeyAPI, travelHost } from '../keys/keys';
+import { URL } from '../keys/keys';
 
 export const getPlacesData = async (type, sw, ne) => {
   try {
@@ -12,8 +12,8 @@ export const getPlacesData = async (type, sw, ne) => {
         tr_longitude: ne.lng,
       },
       headers: {
-        'x-rapidapi-key': travelKeyAPI,
-        'x-rapidapi-host': travelHost
+        'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_TRAVEL_API_KEY,
+        'x-rapidapi-host': 'travel-advisor.p.rapidapi.com'
       }
     });
 
