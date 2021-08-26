@@ -40,12 +40,12 @@ const App = () => {
 
   // should update when either bounds or coords change
   useEffect(() => {  
-    setLoading(true);
-    
     if (bounds) {
+      setLoading(true);
+
       getPlacesData(type, bounds.sw, bounds.ne)
         .then((data) => {
-          setPlaces(data);
+          setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
           setFilteredPlaces([])
           setLoading(false)
         });
