@@ -29,10 +29,10 @@ export const getPlacesData = async (type, sw, ne) => {
 export const getWeatherData = async (lat, lng) => {
   try {
     const { data } = await axios.get('https://community-open-weather-map.p.rapidapi.com/find', {
-      params: { lon: '0', lat: '0' },
+      params: { lon: lng, lat: lat },
       headers: {
         'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
-        'x-rapidapi-key': 'a66f8625e6msh1b8b020dd9212b4p1815a6jsn43c94a2a1a2b'
+        'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_WEATHER_API_KEY
       }
     });
   } catch (error) {
