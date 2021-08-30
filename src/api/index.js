@@ -35,6 +35,8 @@ export const getWeatherData = async (lat, lng) => {
         'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_WEATHER_API_KEY
       }
     });
+
+    return data;
   } catch (error) {
     console.log(error);
   }
