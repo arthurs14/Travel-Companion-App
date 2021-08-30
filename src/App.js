@@ -1,25 +1,26 @@
 import { useEffect, useState } from 'react';
 import { CssBaseline, Grid } from '@material-ui/core';
 
-import { getPlacesData } from './api';
+import { getPlacesData, getWeatherData } from './api';
 
 import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
 
 const App = () => {
-   const [places, setPlaces] = useState([]);
+  const [places, setPlaces] = useState([]);
+  const [weatherData, setWeatherData] = useState([]);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
 
-   const [childClicked, setChildClicked] = useState(null);
+  const [childClicked, setChildClicked] = useState(null);
 
-   const [coordinates, setCoordinates] = useState({});
-   const [bounds, setBounds] = useState({});
+  const [coordinates, setCoordinates] = useState({});
+  const [bounds, setBounds] = useState({});
 
-   const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-   const [type, setType] = useState('restaurants');
-   const [rating, setRating] = useState('');
+  const [type, setType] = useState('restaurants');
+  const [rating, setRating] = useState('');
 
   // should only run at the start
   useEffect(() => {
@@ -42,6 +43,9 @@ const App = () => {
   useEffect(() => {  
     if (bounds.sw && bounds.ne) {
       setLoading(true);
+
+      getWeatherData(coordinates.lat, coordinates.lng)
+        .then((data) => setWeatherData(data));
 
       getPlacesData(type, bounds.sw, bounds.ne)
         .then((data) => {
